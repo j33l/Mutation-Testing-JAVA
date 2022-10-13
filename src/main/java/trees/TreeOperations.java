@@ -1,8 +1,11 @@
-package trees;
+// package trees; // ERROR: Can not find main class
 
 import java.util.ArrayList; // import the ArrayList class
 
 // import trees.Node; // importing user defined Node class implemetation
+// ERROR: cannot find symbol
+
+// work around bellow
 class Node {
     int value;
     Node left;
@@ -25,27 +28,28 @@ public class TreeOperations {
             return new ArrayList();
         }
 
-        ArrayList<Node> nodes = new ArrayList<Node>();
-        nodes.add(root);
+        ArrayList<Node> orderedNodes = new ArrayList<Node>();
+        orderedNodes.add(root);
 
-        while (!nodes.isEmpty()) {
+        while (!orderedNodes.isEmpty()) {
 
-            Node node = nodes.remove(0);
+            Node node = orderedNodes.remove(0);
 
             System.out.print(" " + node.value);
 
             if (node.left != null) {
-                nodes.add(node.left);
+                orderedNodes.add(node.left);
             }
 
             if (node.right != null) {
-                nodes.add(node.right);
+                orderedNodes.add(node.right);
             }
         }
 
-        return nodes;
+        return orderedNodes;
     }
 
+    // using for development testing
     public static void main(String[] args)
     {
         TreeOperations treeOperations = new TreeOperations();
@@ -64,24 +68,11 @@ public class TreeOperations {
         root.left.left =  new Node(3);
         root.left.right =  new Node(4);
         root.right.left =  new Node(5);
-        root.right.right =  new Node(6);
+        root.right.right =  new Node(66);
 
         System.out.println("Breadth-first search: ");
         TreeOperations.bfs(root);
 
     }
 
-}
-
-class Main {
-  public static void main(String[] args) {
-    ArrayList<String> cars = new ArrayList<String>();
-    cars.add("Volvo");
-    cars.add("BMW");
-    cars.add("Ford");
-    cars.add("Mazda");
-    for (int i = 0; i < cars.size(); i++) {
-      System.out.println(cars.get(i));
-    }
-  }
 }

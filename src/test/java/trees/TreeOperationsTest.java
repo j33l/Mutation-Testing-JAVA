@@ -1,9 +1,7 @@
-package trees;
+// package trees;
 
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
-
-import ../../../main/java/trees/TreeOperations.java; // importing user defined TreeOperations class implemetation
 
 public class TreeOperationsTest {
     @Test
@@ -16,9 +14,23 @@ public class TreeOperationsTest {
     @Test
     public void bfsTest() {
         TreeOperations treeOperations = new TreeOperations();
-        tree
 
-        treeOperations.bfs();
-        assertEquals(, [0, 1, 2, 3, 4]);
+        // creating a binary tree
+        /*
+               0
+              / \
+             1   2
+            / \ / \
+           3  4 5  6
+        */
+        Node root = new Node(0);
+        root.left =  new Node(1);
+        root.right =  new Node(2);
+        root.left.left =  new Node(3);
+        root.left.right =  new Node(4);
+        root.right.left =  new Node(5);
+        root.right.right =  new Node(66);
+
+        assertEquals([0, 1, 2, 3, 4, 5, 66], treeOperations.bfs(root));
     }
 }
