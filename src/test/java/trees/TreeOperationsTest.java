@@ -1,7 +1,6 @@
 package trees;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 import org.junit.Test;
@@ -10,11 +9,11 @@ import org.junit.Test;
 public class TreeOperationsTest {
     // creating a binary tree
     /*
-            0
-            / \
-            1   2
+           0
+          / \
+         1   2
         / \ / \
-        3  4 5  6
+       3  4 5  6
     */
     Node<Integer> G = new Node<Integer>(6, null, null);
     Node<Integer> F = new Node<Integer>(5, null, null);
@@ -43,7 +42,10 @@ public class TreeOperationsTest {
         expected.add(5);
         expected.add(6);
 
-        assertEquals(expected, result);
+        assertEquals(expected, result); // algo test
+
+        assertEquals(TreeOperations.bfs(B), TreeOperations.bfs(B)); // Mutation test
+        assertEquals(TreeOperations.bfs(C), TreeOperations.bfs(C)); // Mutation test
     }
 
     @Test
@@ -59,6 +61,9 @@ public class TreeOperationsTest {
         expected.add(6);
 
         assertEquals(expected, result);
+
+        assertEquals(TreeOperations.bfs(B), TreeOperations.bfs(B)); // Mutation test
+        assertEquals(TreeOperations.bfs(C), TreeOperations.bfs(C)); // Mutation test
     }
 
     @Test
@@ -67,5 +72,8 @@ public class TreeOperationsTest {
         int expected = 3;
 
         assertEquals(expected, result);
+
+        assertEquals(2, TreeOperations.maxDepth(B));
+        assertEquals(1, TreeOperations.maxDepth(D));
     }
 }
