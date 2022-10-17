@@ -15,26 +15,34 @@ public class TreeOperationsTest {
         assertEquals(2, 1 + 1);
     }
 
-    // @Test
-    // public void bfsTest() {
-    //     TreeOperations treeOperations = new TreeOperations();
+    @Test
+    public void bfsTest() {
+        // creating a binary tree
+        /*
+               0
+              / \
+             1   2
+            / \ / \
+           3  4 5  6
+        */
+        Node<Integer> G = new Node<Integer>(6, null, null);
+        Node<Integer> F = new Node<Integer>(5, null, null);
+        Node<Integer> E = new Node<Integer>(4, null, null);
+        Node<Integer> D = new Node<Integer>(3, null, null);
+        Node<Integer> C = new Node<Integer>(2, F, G);
+        Node<Integer> B = new Node<Integer>(1, D, E);
+        Node<Integer> A = new Node<Integer>(0, B, C);
+                
+        ArrayList<Integer> BFSResult = TreeOperations.bfs(A);        
+        ArrayList<Integer> BFSExpected = new ArrayList<Integer>();
+        BFSExpected.add(0);
+        BFSExpected.add(1);
+        BFSExpected.add(2);
+        BFSExpected.add(3);
+        BFSExpected.add(4);
+        BFSExpected.add(5);
+        BFSExpected.add(6);
 
-    //     // creating a binary tree
-    //     /*
-    //            0
-    //           / \
-    //          1   2
-    //         / \ / \
-    //        3  4 5  6
-    //     */
-    //     Node root = new Node(0);
-    //     root.left =  new Node(1);
-    //     root.right =  new Node(2);
-    //     root.left.left =  new Node(3);
-    //     root.left.right =  new Node(4);
-    //     root.right.left =  new Node(5);
-    //     root.right.right =  new Node(66);
-
-    //     assertEquals([0, 1, 2, 3, 4, 5, 66], treeOperations.bfs(root));
-    // }
+        assertEquals(BFSExpected, BFSResult);
+    }
 }
