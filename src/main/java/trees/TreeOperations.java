@@ -1,41 +1,27 @@
-// package trees; // ERROR: Can not find main class
+package trees; // ERROR: Can not find main class
 
 import java.util.ArrayList; // import the ArrayList class
-
-// import trees.Node; // importing user defined Node class implemetation
-// ERROR: cannot find symbol
-
-// work around bellow
-class Node {
-    int value;
-    Node left;
-    Node right;
-
-    Node(int value) {
-        this.value = value;
-        right = null;
-        left = null;
-    }
-}
 
 public class TreeOperations {
     
     // Breath-first search (A.K.A. Level-Order Traversal)
-    // NOTE: I am using the Node implementation from `src/main/java/trees/Node.java` file, Assuming that Node.left is parent node and Node.right is child node.
-    public static ArrayList bfs(final Node root)
+    public static <A> ArrayList<A> bfs(final Node<A> root)
     {
         if (root == null) {
-            return new ArrayList();
+            return new ArrayList<A>();
         }
 
-        ArrayList<Node> orderedNodes = new ArrayList<Node>();
+        ArrayList<Node<A>> orderedNodes = new ArrayList<Node<A>>();
         orderedNodes.add(root);
+        
+        ArrayList<A> result = new ArrayList<A>();
 
         while (!orderedNodes.isEmpty()) {
 
-            Node node = orderedNodes.remove(0);
+            Node<A> node = orderedNodes.remove(0);
 
-            System.out.print(" " + node.value);
+            // System.out.print(" " + node.value);
+            result.add(node.contents);
 
             if (node.left != null) {
                 orderedNodes.add(node.left);
@@ -46,14 +32,13 @@ public class TreeOperations {
             }
         }
 
-        return orderedNodes;
+        return result;
     }
 
     // using for development testing
+    /*
     public static void main(String[] args)
     {
-        TreeOperations treeOperations = new TreeOperations();
-
         // creating a binary tree
         /*
                0
@@ -62,17 +47,22 @@ public class TreeOperations {
             / \ / \
            3  4 5  6
         */
-        Node root = new Node(0);
-        root.left =  new Node(1);
-        root.right =  new Node(2);
-        root.left.left =  new Node(3);
-        root.left.right =  new Node(4);
-        root.right.left =  new Node(5);
-        root.right.right =  new Node(66);
+        /*
+        Node<Integer> G = new Node<Integer>(6, null, null);
+        Node<Integer> F = new Node<Integer>(5, null, null);
+        Node<Integer> E = new Node<Integer>(4, null, null);
+        Node<Integer> D = new Node<Integer>(3, null, null);
+        Node<Integer> C = new Node<Integer>(2, F, G);
+        Node<Integer> B = new Node<Integer>(1, D, E);
+        Node<Integer> A = new Node<Integer>(0, B, C);
+        
 
         System.out.println("Breadth-first search: ");
-        TreeOperations.bfs(root);
+        
+        ArrayList<Integer> BFSResult = TreeOperations.bfs(A);
+        System.out.println(BFSResult);
+        
 
     }
-
+    */
 }

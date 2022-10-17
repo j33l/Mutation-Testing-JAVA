@@ -1,6 +1,6 @@
 package trees; // creating package named `trees`
 
-/*
+
 public class Node<A> {
     public final A contents;
     public final Node<A> left;
@@ -14,16 +14,16 @@ public class Node<A> {
         this.right = right;
     }
 }
-*/
 
-public class Node {
-    int value;
-    Node left;
-    Node right;
 
-    Node(int value) {
-        this.value = value;
-        right = null;
-        left = null;
-    }
-}
+// public class Node {
+//     int value;
+//     Node left;
+//     Node right;
+
+//     Node(int value) {
+//         this.value = value;
+//         right = null;
+//         left = null;
+//     }
+// }
