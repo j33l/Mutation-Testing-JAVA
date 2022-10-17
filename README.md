@@ -1,3 +1,19 @@
+# DEvelopment testing
+```sh
+╭─    ~/workSpace_zk/University_Projects/coverage_mutation_template/src/main/java    main !3 ──────────────────────────────────────────────────────── ✔  12:12:23 PM  ─╮
+╰─ javac trees/Node.java  trees/TreeOperations.java                                                                                                                               ─╯
+╭─    ~/workSpace_zk/University_Projects/coverage_mutation_template/src/main/java    main !4 ──────────────────────────────────────────────────────── ✔  12:15:40 PM  ─╮
+╰─ java trees/TreeOperations                                                                                                                                                      ─╯
+[0, 1, 2, 3, 4, 5, 6]
+[0, 1, 3, 4, 2, 5, 6]
+3
+╭─    ~/workSpace_zk/University_Projects/coverage_mutation_template/src/main/java    main !4 ──────────────────────────────────────────────────────── ✔  12:15:41 PM  ─╮
+╰─ pwd                                                                                                                                                                            ─╯
+/Users/jeel/workSpace_zk/University_Projects/coverage_mutation_template/src/main/java
+╭─    ~/workSpace_zk/University_Projects/coverage_mutation_template/src/main/java    main !4 ──────────────────────────────────────────────────────── ✔  12:16:04 PM  ─╮
+╰─   
+```
+
 # Maven, Test Coverage, Mutation Analysis #
 
 - To compile all code: `mvn compile`

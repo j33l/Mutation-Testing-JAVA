@@ -32,17 +32,40 @@ public class TreeOperationsTest {
     }
 
     @Test
-    public void bfsTest() {
-        ArrayList<Integer> BFSResult = TreeOperations.bfs(A);        
-        ArrayList<Integer> BFSExpected = new ArrayList<Integer>();
-        BFSExpected.add(0);
-        BFSExpected.add(1);
-        BFSExpected.add(2);
-        BFSExpected.add(3);
-        BFSExpected.add(4);
-        BFSExpected.add(5);
-        BFSExpected.add(6);
+    public void BFSTest() {
+        ArrayList<Integer> result = TreeOperations.bfs(A);        
+        ArrayList<Integer> expected = new ArrayList<Integer>();
+        expected.add(0);
+        expected.add(1);
+        expected.add(2);
+        expected.add(3);
+        expected.add(4);
+        expected.add(5);
+        expected.add(6);
 
-        assertEquals(BFSExpected, BFSResult);
+        assertEquals(expected, result);
+    }
+
+    @Test
+    public void PreOrderTest() {
+        ArrayList<Integer> result = TreeOperations.preorder(A);        
+        ArrayList<Integer> expected = new ArrayList<Integer>();
+        expected.add(0);
+        expected.add(1);
+        expected.add(3);
+        expected.add(4);
+        expected.add(2);
+        expected.add(5);
+        expected.add(6);
+
+        assertEquals(expected, result);
+    }
+
+    @Test
+    public void MaxDepthTest() {
+        int result = TreeOperations.maxDepth(A);        
+        int expected = 3;
+
+        assertEquals(expected, result);
     }
 }
