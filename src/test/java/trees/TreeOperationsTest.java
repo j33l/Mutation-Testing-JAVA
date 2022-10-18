@@ -23,12 +23,14 @@ public class TreeOperationsTest {
     Node<Integer> B = new Node<Integer>(1, D, E);
     Node<Integer> A = new Node<Integer>(0, B, C);
 
+    /*
     @Test
     public void bogusTest() {
         // illustrates how to write a test
         // assertEquals(expected, expression_being_tested)
         assertEquals(2, 1 + 1);
     }
+    */
 
     @Test
     public void BFSTest() {
