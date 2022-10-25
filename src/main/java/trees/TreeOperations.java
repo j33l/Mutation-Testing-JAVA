@@ -2,6 +2,8 @@ package trees; // ERROR: Can not find main class
 
 import java.io.PrintStream;
 import java.util.ArrayList; // import the ArrayList class
+import java.util.Currency;
+import java.util.Random;
 
 public class TreeOperations {
     
@@ -77,26 +79,69 @@ public class TreeOperations {
 
 
 
+    // return array for n numbers
+    public static ArrayList<Integer> generateArray(int n) {
+        ArrayList<Integer> arr = new ArrayList<Integer>(n);
 
-    public static Node<Integer> generateTree(int n) {
-        if (n == 0) {
-            return null;
+        for (int i = 0; i < n; i++) {
+            arr.add(i);
         }
 
-        return new Node<Integer>(n, generateTree(n - 1), generateTree(n - 2));
+        return arr;
     }
 
-    // tree visuliaztion
-    // public static void printTree(Node<Integer> root) {
-    //     if (root == null) {
-    //         return;
+    // generate random tree with n nodes
+    /*
+    public static Node<Integer> generateTree(int n) {
+        ArrayList<Integer> arr = generateArray(n);
+        Node<Integer> head = null;
+        Node<Integer> currentNode = null;
+
+        while(arr.size() > 0) {
+            int value = arr.remove(0);
+
+            if (head == null) {
+                head = new Node<Integer>(value, null, null);
+                currentNode = head;
+            } else {
+                currentNode.right = new Node<Integer>(value, null, null);
+                currentNode = currentNode.right;
+            }
+        }
+
+        return head;
+    }
+    */
+
+    // static ArrayList<Integer> arr = generateArray(7);
+
+    // public static Node<Integer> generateTree() {
+    //     if (arr.size() == 0) {
+    //         return null;
     //     }
 
-    //     System.out.println(root.contents);
-    //     printTree(root.left);
-    //     System.out.print("\t");
-    //     printTree(root.right);
+    //     return new Node<Integer>(arr.remove(0), generateTree(), generateTree());
     // }
+
+
+    private static Random random = new Random();
+
+    public static Node<Integer> binaryTreeGenerator(int n, int key){
+        if (n == 0)
+            return null;
+
+        Node<Integer> root = new Node<Integer>(key, null, null);
+
+        // Number of nodes in the left subtree (in [0, n-1])
+        int leftN = random.nextInt(n);
+
+        // Recursively build each subtree
+        root.left = binaryTreeGenerator(leftN, key);
+        root.right = binaryTreeGenerator(n - leftN - 1, key);
+
+        return root;
+    }
+
 
 
     // using for development testing
@@ -127,7 +172,9 @@ public class TreeOperations {
         System.out.println(TreeOperations.nodeCount(A));
 
         System.out.println("\nTree -->\n");
-        TreePrinter.print(A);
+        // TreePrinter.print();
+        Node<Integer> n = TreeOperations.binaryTreeGenerator(5, 0);
+        TreePrinter.print(n);
     }
 
 }
