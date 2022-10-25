@@ -78,4 +78,39 @@ public class TreeOperationsTest {
         assertEquals(2, TreeOperations.maxDepth(B));
         assertEquals(1, TreeOperations.maxDepth(D));
     }
+
+    // automated testing
+    // generate a tree with n nodes
+    public static Node<Integer> generateTree(int n) {
+        if (n == 0) {
+            return null;
+        }
+
+        return new Node<Integer>(n, generateTree(n - 1), generateTree(n - 2));
+    }
+
+    // tree visuliaztion
+    public static void printTree(Node<Integer> root) {
+        if (root == null) {
+            return;
+        }
+
+        System.out.println(root.contents);
+        printTree(root.left);
+        printTree(root.right);
+    }
+
+    @Test
+    public void NodeCountTest() {
+        int numberOfNodes = 10; //(int)(Math.random() * 50 + 1);
+        Node<Integer> root = generateTree(numberOfNodes);
+
+        printTree(root);
+
+        // assertEquals(numberOfNodes, TreeOperations.nodeCount(root));
+
+        // assertEquals(3, TreeOperations.nodeCount(B));
+        // assertEquals(1, TreeOperations.nodeCount(D));
+    }
+
 }

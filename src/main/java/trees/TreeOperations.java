@@ -1,5 +1,6 @@
 package trees; // ERROR: Can not find main class
 
+import java.io.PrintStream;
 import java.util.ArrayList; // import the ArrayList class
 
 public class TreeOperations {
@@ -73,8 +74,32 @@ public class TreeOperations {
         return 1 + nodeCount(root.left) + nodeCount(root.right);
     }
 
+
+
+
+
+    public static Node<Integer> generateTree(int n) {
+        if (n == 0) {
+            return null;
+        }
+
+        return new Node<Integer>(n, generateTree(n - 1), generateTree(n - 2));
+    }
+
+    // tree visuliaztion
+    // public static void printTree(Node<Integer> root) {
+    //     if (root == null) {
+    //         return;
+    //     }
+
+    //     System.out.println(root.contents);
+    //     printTree(root.left);
+    //     System.out.print("\t");
+    //     printTree(root.right);
+    // }
+
+
     // using for development testing
-   
     public static void main(String[] args)
     {
         // creating a binary tree
@@ -100,6 +125,9 @@ public class TreeOperations {
         System.out.println(PreOrderResult);
         System.out.println(TreeOperations.maxDepth(A));
         System.out.println(TreeOperations.nodeCount(A));
+
+        System.out.println("\nTree -->\n");
+        TreePrinter.print(A);
     }
 
 }
