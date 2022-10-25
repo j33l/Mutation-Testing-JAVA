@@ -3,6 +3,8 @@ package trees;
 import static org.junit.Assert.assertEquals;
 
 import java.util.ArrayList;
+import java.util.Random;
+
 import org.junit.Test;
 
 
@@ -80,37 +82,50 @@ public class TreeOperationsTest {
     }
 
     // automated testing
-    // generate a tree with n nodes
-    public static Node<Integer> generateTree(int n) {
-        if (n == 0) {
+    
+    // return array for n numbers
+    public static ArrayList<Integer> generateArray(int n) {
+        ArrayList<Integer> arr = new ArrayList<Integer>(n);
+
+        for (int i = 0; i < n; i++) {
+            arr.add(i);
+        }
+
+        return arr;
+    }
+
+    // generate random tree with n nodes
+    static int numberOfNodes = (int)(Math.random() * 50 + 1);
+    static ArrayList<Integer> arr = generateArray(numberOfNodes);
+    private static Random random = new Random();
+
+    public static Node<Integer> binaryTreeGenerator(int n){
+        if (n == 0)
             return null;
-        }
 
-        return new Node<Integer>(n, generateTree(n - 1), generateTree(n - 2));
+        Node<Integer> root = new Node<Integer>(arr.remove(0), null, null);
+
+        // Number of nodes in the left subtree (in [0, n-1])
+        int leftN = random.nextInt(n);
+
+        // Recursively build each subtree
+        root.left = binaryTreeGenerator(leftN);
+        root.right = binaryTreeGenerator(n - leftN - 1);
+
+        return root;
     }
 
-    // tree visuliaztion
-    public static void printTree(Node<Integer> root) {
-        if (root == null) {
-            return;
-        }
-
-        System.out.println(root.contents);
-        printTree(root.left);
-        printTree(root.right);
-    }
 
     @Test
     public void NodeCountTest() {
-        int numberOfNodes = 10; //(int)(Math.random() * 50 + 1);
-        Node<Integer> root = generateTree(numberOfNodes);
+        Node<Integer> root = binaryTreeGenerator(numberOfNodes);
 
-        printTree(root);
+        TreePrinter.print(root);
 
-        // assertEquals(numberOfNodes, TreeOperations.nodeCount(root));
+        assertEquals(numberOfNodes, TreeOperations.nodeCount(root));
 
-        // assertEquals(3, TreeOperations.nodeCount(B));
-        // assertEquals(1, TreeOperations.nodeCount(D));
+    //     assertEquals(3, TreeOperations.nodeCount(B));
+    //     assertEquals(1, TreeOperations.nodeCount(D));
     }
 
 }

@@ -14,6 +14,11 @@
 ╰─   
 ```
 
+```
+╭─    ~/workSpace_zk/University_Projects/coverage_mutation_template    main !3 ──────────────────────────────────────────────────────────────────────────────────────── ✔  12:58:16 PM  ─╮
+╰─ javac trees/Node.java trees/TreeOperations.java trees/TreePrinter.java && java trees/TreeOperations  
+```
+
 # Maven, Test Coverage, Mutation Analysis #
 
 - To compile all code: `mvn compile`
