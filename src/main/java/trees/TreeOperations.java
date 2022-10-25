@@ -63,9 +63,18 @@ public class TreeOperations {
         return Math.max(leftDepth, rightDepth) + 1;
     }
 
+    // calculate number of nodes in a tree
+    public static <A> int nodeCount(final Node<A> root)
+    {
+        if (root == null) {
+            return 0;
+        }
+
+        return 1 + nodeCount(root.left) + nodeCount(root.right);
+    }
+
     // using for development testing
-    
-   /*
+   
     public static void main(String[] args)
     {
         // creating a binary tree
@@ -76,7 +85,6 @@ public class TreeOperations {
             / \ / \
            3  4 5  6
         */
-        /*
         Node<Integer> G = new Node<Integer>(6, null, null);
         Node<Integer> F = new Node<Integer>(5, null, null);
         Node<Integer> E = new Node<Integer>(4, null, null);
@@ -91,8 +99,7 @@ public class TreeOperations {
         System.out.println(BFSResult);
         System.out.println(PreOrderResult);
         System.out.println(TreeOperations.maxDepth(A));
+        System.out.println(TreeOperations.nodeCount(A));
     }
 
-    */
-    
 }
