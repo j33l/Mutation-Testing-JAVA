@@ -48,9 +48,13 @@ public class TreeOperationsTest {
 
         assertEquals(expected, result); // algo test
 
+        assertEquals(new ArrayList<Integer>(), TreeOperations.bfs(null)); // null test
+
         assertEquals(TreeOperations.bfs(B), TreeOperations.bfs(B)); // Mutation test
         assertEquals(TreeOperations.bfs(C), TreeOperations.bfs(C)); // Mutation test
     }
+
+
 
     @Test
     public void PreOrderTest() {
@@ -120,7 +124,7 @@ public class TreeOperationsTest {
     public void NodeCountTest() {
         Node<Integer> root = binaryTreeGenerator(numberOfNodes);
 
-        TreePrinter.print(root);
+        // TreePrinter.print(root);
 
         assertEquals(numberOfNodes, TreeOperations.nodeCount(root));
 

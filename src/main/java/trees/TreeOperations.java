@@ -88,7 +88,7 @@ public class TreeOperations {
     // }
 
     // // generate random tree with n nodes
-    // static ArrayList<Integer> arr = generateArray(5);
+    // static ArrayList<Integer> arr = generateArray(7);
     // private static Random random = new Random();
 
     // public static Node<Integer> binaryTreeGenerator(int n){
@@ -138,7 +138,7 @@ public class TreeOperations {
 
     //     System.out.println("\nTree -->\n");
     //     // TreePrinter.print();
-    //     Node<Integer> n = TreeOperations.binaryTreeGenerator(5);
+    //     Node<Integer> n = TreeOperations.binaryTreeGenerator(7);
     //     TreePrinter.print(n);
     // }
 
