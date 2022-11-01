@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>TreeOperations.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">trees</a> &gt; <a href="index.source.html" class="el_package">trees</a> &gt; <span class="el_source">TreeOperations.java</span></div><h1>TreeOperations.java</h1><pre class="source lang-java linenums">package trees; // ERROR: Can not find main class
+
+import java.util.ArrayList; // import the ArrayList class
+
+<span class="fc" id="L5">public class TreeOperations {</span>
+    
+    // Breath-first search (A.K.A. Level-Order Traversal)
+    public static &lt;A&gt; ArrayList&lt;A&gt; bfs(final Node&lt;A&gt; root)
+    {
+<span class="fc bfc" id="L10" title="All 2 branches covered.">        if (root == null) {</span>
+<span class="fc" id="L11">            return new ArrayList&lt;A&gt;();</span>
+        }
+
+<span class="fc" id="L14">        ArrayList&lt;Node&lt;A&gt;&gt; orderedNodes = new ArrayList&lt;Node&lt;A&gt;&gt;();</span>
+<span class="fc" id="L15">        orderedNodes.add(root);</span>
+        
+<span class="fc" id="L17">        ArrayList&lt;A&gt; result = new ArrayList&lt;A&gt;();</span>
+
+<span class="fc bfc" id="L19" title="All 2 branches covered.">        while (!orderedNodes.isEmpty()) {</span>
+
+<span class="fc" id="L21">            Node&lt;A&gt; node = orderedNodes.remove(0);</span>
+
+            // System.out.print(&quot; &quot; + node.value);
+<span class="fc" id="L24">            result.add(node.contents);</span>
+
+<span class="fc bfc" id="L26" title="All 2 branches covered.">            if (node.left != null) {</span>
+<span class="fc" id="L27">                orderedNodes.add(node.left);</span>
+            }
+
+<span class="fc bfc" id="L30" title="All 2 branches covered.">            if (node.right != null) {</span>
+<span class="fc" id="L31">                orderedNodes.add(node.right);</span>
+            }
+<span class="fc" id="L33">        }</span>
+
+<span class="fc" id="L35">        return result;</span>
+    }
+
+    public static &lt;A&gt; ArrayList&lt;A&gt; preorder(final Node&lt;A&gt; root)
+    {
+<span class="fc bfc" id="L40" title="All 2 branches covered.">        if (root == null) {</span>
+<span class="fc" id="L41">            return new ArrayList&lt;A&gt;();</span>
+        }
+
+<span class="fc" id="L44">        ArrayList&lt;A&gt; result = new ArrayList&lt;A&gt;();</span>
+
+<span class="fc" id="L46">        result.add(root.contents);</span>
+
+<span class="fc" id="L48">        result.addAll(preorder(root.left));</span>
+<span class="fc" id="L49">        result.addAll(preorder(root.right));</span>
+
+<span class="fc" id="L51">        return result;</span>
+    }
+
+    public static &lt;A&gt; int maxDepth(final Node&lt;A&gt; root)
+    {
+<span class="fc bfc" id="L56" title="All 2 branches covered.">        if (root == null) {</span>
+<span class="fc" id="L57">            return 0;</span>
+        }
+
+<span class="fc" id="L60">        int leftDepth = maxDepth(root.left);</span>
+<span class="fc" id="L61">        int rightDepth = maxDepth(root.right);</span>
+
+<span class="fc" id="L63">        return Math.max(leftDepth, rightDepth) + 1;</span>
+    }
+
+    // calculate number of nodes in a tree
+    public static &lt;A&gt; int nodeCount(final Node&lt;A&gt; root)
+    {
+<span class="fc bfc" id="L69" title="All 2 branches covered.">        if (root == null) {</span>
+<span class="fc" id="L70">            return 0;</span>
+        }
+
+<span class="fc" id="L73">        return 1 + nodeCount(root.left) + nodeCount(root.right);</span>
+    }
+
+    // // return array for n numbers
+    // public static ArrayList&lt;Integer&gt; generateArray(int n) {
+    //     ArrayList&lt;Integer&gt; arr = new ArrayList&lt;Integer&gt;(n);
+
+    //     for (int i = 0; i &lt; n; i++) {
+    //         arr.add(i);
+    //     }
+
+    //     return arr;
+    // }
+
+    // // generate random tree with n nodes
+    // static ArrayList&lt;Integer&gt; arr = generateArray(7);
+    // private static Random random = new Random();
+
+    // public static Node&lt;Integer&gt; binaryTreeGenerator(int n){
+    //     if (n == 0)
+    //         return null;
+
+    //     Node&lt;Integer&gt; root = new Node&lt;Integer&gt;(arr.remove(0), null, null);
+
+    //     // Number of nodes in the left subtree (in [0, n-1])
+    //     int leftN = random.nextInt(n);
+
+    //     // Recursively build each subtree
+    //     root.left = binaryTreeGenerator(leftN);
+    //     root.right = binaryTreeGenerator(n - leftN - 1);
+
+    //     return root;
+    // }
+
+
+
+    // // using for development testing
+    // public static void main(String[] args)
+    // {
+    //     // creating a binary tree
+    //     /*
+    //            0
+    //           / \
+    //          1   2
+    //         / \ / \
+    //        3  4 5  6
+    //     */
+    //     Node&lt;Integer&gt; G = new Node&lt;Integer&gt;(6, null, null);
+    //     Node&lt;Integer&gt; F = new Node&lt;Integer&gt;(5, null, null);
+    //     Node&lt;Integer&gt; E = new Node&lt;Integer&gt;(4, null, null);
+    //     Node&lt;Integer&gt; D = new Node&lt;Integer&gt;(3, null, null);
+    //     Node&lt;Integer&gt; C = new Node&lt;Integer&gt;(2, F, G);
+    //     Node&lt;Integer&gt; B = new Node&lt;Integer&gt;(1, D, E);
+    //     Node&lt;Integer&gt; A = new Node&lt;Integer&gt;(0, B, C);
+                
+    //     ArrayList&lt;Integer&gt; BFSResult = TreeOperations.bfs(A);
+    //     ArrayList&lt;Integer&gt; PreOrderResult = TreeOperations.preorder(A);
+        
+    //     System.out.println(BFSResult);
+    //     System.out.println(PreOrderResult);
+    //     System.out.println(TreeOperations.maxDepth(A));
+    //     System.out.println(TreeOperations.nodeCount(A));
+
+    //     System.out.println(&quot;\nTree --&gt;\n&quot;);
+    //     // TreePrinter.print();
+    //     Node&lt;Integer&gt; n = TreeOperations.binaryTreeGenerator(7);
+    //     TreePrinter.print(n);
+    // }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>
