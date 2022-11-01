@@ -36,6 +36,9 @@ public class TreeOperationsTest {
 
     @Test
     public void BFSTest() {
+
+        TreeOperations t = new TreeOperations(); // just for reaching 100% coverage, creating object of the class with Statuc methoids, LOL
+
         ArrayList<Integer> result = TreeOperations.bfs(A);        
         ArrayList<Integer> expected = new ArrayList<Integer>();
         expected.add(0);

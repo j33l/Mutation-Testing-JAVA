@@ -1,9 +1,6 @@
 package trees; // ERROR: Can not find main class
 
-import java.io.PrintStream;
 import java.util.ArrayList; // import the ArrayList class
-import java.util.Currency;
-import java.util.Random;
 
 public class TreeOperations {
     
